@@ -17,6 +17,71 @@ Steps to create a fined tuned LLMs from base LLMs
 - Now, The objective of instruction tuned LLMs is to generate highly rated output with high probability (with Reinforcement Learning with Human Feedback)
 
 #### Note: One thing everyone gets wrong is this Base model conisders previous **TOKENS** to predict next token but not **WORDS**
+![Base LLMS](./images/2.%20Tokens.png)
+
+## Temperature Parameter
+Temperature is one of the parameters of OpenAi chat completion client, it takes a value between 0-1 and it is a way to control the type, quality, randomness, creativity of the LLM text generation.
+
+![Base LLMS](./images/2.%20Temperature.png)
+
+### Low Temperature Value (0.2)
+- The LLM generates focused, straight forward, less/no creativity, close to real world responses
+
+### High Temperature Value (0.8)
+- The LLM generates highly creative, helucinated, highly random responses
+
+
+## Input Evaluation: Customer Support Query classification with open ai agent\
+
+- Set the behaviour of assistant as a customer service agent by passing a system message
+
+syestem message
+```
+system_message = f"""
+You will be provided with customer service queries. \
+The customer service query will be delimited with \
+{delimiter} characters.
+Classify each query into a primary category \
+and a secondary category. 
+Provide your output in json format with the \
+keys: primary and secondary.
+
+Primary categories: Billing, Technical Support, \
+Account Management, or General Inquiry.
+
+Billing secondary categories:
+Unsubscribe or upgrade
+Add a payment method
+Explanation for charge
+Dispute a charge
+
+Technical Support secondary categories:
+General troubleshooting
+Device compatibility
+Software updates
+
+Account Management secondary categories:
+Password reset
+Update personal information
+Close account
+Account security
+
+General Inquiry secondary categories:
+Product information
+Pricing
+Feedback
+Speak to a human
+
+"""
+```
+
+## OpenAI moderation API
+
+- Identiefies the type of input context, and gives a softmax score for each type. It maily identifies hatred, harmful, violence.
+
+
+
+
 
 
 
